@@ -1,0 +1,28 @@
+.THIS {
+}
+.THIS table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+.THIS td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+.THIS th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+.THIS tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+.THIS .UserInfo{
+    margin-left: 2em;
+}
+.THIS button {
+    margin: 1em;
+}

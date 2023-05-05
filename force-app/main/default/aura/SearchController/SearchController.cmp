@@ -1,0 +1,43 @@
+<aura:component controller="SearchController" implements="force:appHostable, flexipage:availableForAllPageTypes, force:hasSObjectName" access="global">
+    <aura:attribute name="searchTerm" type="String" default = "Some text"/>
+    <aura:attribute name="predictions" type="List" default="[1,2,3]"/>
+    <aura:attribute name="sObjectName" type="String" />
+    <aura:attribute name="sObjectLabel" type="String" />
+    <aura:attribute name="displayStatus" type="String" default = "display:none"/>
+    <aura:attribute name="errorNothingFound" type="String" default = ""/>
+    <aura:attribute name="sObjectNameField" type="String" />
+    <aura:attribute name="countOfRecords" type="Integer" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div>
+        <lightning:input
+            aura:id="enter-search"
+            name="enter-search"
+            label="{!$Label.c.Write_to_find_label}"
+            type="search"
+            onchange="{!c.onTextChange}"
+        />
+        <lightning:button label="{!$Label.c.Search_label}" title="{!$Label.c.Search_in_all_fields_label}" onclick="{! c.handleClick }"/>
+        <p style = "color:crimson">{!v.errorNothingFound}</p>
+        <div style="{!v.displayStatus}">
+            <lightning:card iconName="utility:preview" title="{! v.sObjectLabel + ' ' + $Label.c.Display_label}"  >
+                <div class="UserInfo">
+                    <h2>{!$Label.c.You_get_label}&nbsp;{!v.countOfRecords}&nbsp;{!$Label.c.Records_label}!</h2>
+                </div>
+                <lightning:layout>
+                    <lightning:layoutItem padding="around-small">
+                            <table>
+                                <tr>
+                                  <th>Id</th>
+                                  <th>{!v.sObjectNameField}</th>
+                                </tr>
+                                <aura:iteration items="{!v.predictions}" var="prediction">
+                                    <c:recordCard record="{!prediction}"/>
+                                </aura:iteration>
+                            </table>
+                    </lightning:layoutItem>
+                </lightning:layout>
+
+            </lightning:card>
+        </div>
+    </div>
+</aura:component>

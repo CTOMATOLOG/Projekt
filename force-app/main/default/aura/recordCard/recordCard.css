@@ -1,0 +1,23 @@
+.THIS {
+}
+.THIS.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #cc4141;
+    width: 100%;
+  }
+
+.THIS.td {
+    border: 1px solid #c01414;
+    text-align: left;
+    padding: 8px;
+  }
+.THIS.th {
+    border: 1px solid #142e9a;
+    text-align: left;
+    padding: 8px;
+  }
+
+.THIS.tr:nth-child(even) {
+    background-color: #17eda9;
+  }

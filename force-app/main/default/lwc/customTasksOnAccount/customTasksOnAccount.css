@@ -1,0 +1,40 @@
+.card {
+  border: 1px solid #d3d3d3;
+  border-radius: 0.2rem;
+}
+.body{
+  background-color: #ffffff;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+.footer{
+  margin: 0px;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+.slds-page-header {
+  margin-top: 0;
+  border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 1rem;
+}
+
+.popup {
+    position: relative;
+  }
+.popup-content {
+  top: 0px;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  padding: 10px;
+
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.popup-content .slds-card {
+  border-style: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+}

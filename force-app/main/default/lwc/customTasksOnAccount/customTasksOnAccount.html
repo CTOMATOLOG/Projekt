@@ -1,0 +1,69 @@
+<template>
+  <article class="card">
+    <header class="slds-page-header slds-page-header_joined slds-page-header_bleed slds-shrink-none test-headerRegion slds-is-relative slds-media slds-media_center slds-has-flexi-truncate">
+      <div class="slds-media__body">
+        <h2 class="slds-card__header-title">
+          <a href="#" class="slds-card__header-link slds-truncate" title={customLabels.yourTasks}>
+            <span>{customLabels.yourTasks}</span>
+          </a>
+        </h2>
+      </div>
+      <div class="slds-no-flex">
+        <button class="slds-button slds-button_neutral" onclick={createNewTask} aria-haspopup="dialog">{customLabels.newLabel}</button>
+      </div>
+    </header>
+    <div class="slds-p-left_medium body">
+      <table class="popup">
+        <tbody id="listOfCustomTasks">
+          <template for:each={taskList} for:item="task_i" for:index="index">
+            <tr key={task_i.Id}>
+              <td
+                data-id={task_i.Id}
+                onmouseleave={hidePopup}
+              >
+                <a data-id={task_i.Id} onmouseover={showPopup} onclick={handlerNavigate}>{task_i.Name}</a>
+                <div class="popup-content">
+                  <lightning-card class="slds-card" icon-name="standard:attach" title={task_i.Name}>
+                    <div>
+                      <table>
+                        <tr>
+                          <td style="vertical-align: top;"><strong>{customLabels.description}:</strong></td>
+                          <td>&nbsp;</td>
+                          <td style="word-wrap: break-word;">{task_i.Description__c}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>{customLabels.createDate}:</strong></td>
+                          <td>&nbsp;</td>
+                          <td>{task_i.CreatedDate}</td>
+                        </tr>
+                      </table>
+                      <lightning-button
+                        data-id={task_i.Id}
+                        variant="brand"
+                        onclick={handlerNavigate}
+                        class="slds-p-top_medium slds-align_absolute-center"
+                        label="Open record"
+                        slot="actions"
+                      ></lightning-button>
+                    </div>
+                  </lightning-card>
+                </div>
+              </td>
+              <td>
+                <div class="slds-shrink-none">
+                  <lightning-button-menu icon-size="x-small" alternative-text="Show menu">
+                    <lightning-menu-item data-id={task_i.Id} value={task_i} label={customLabels.deleteLabel} onclick={deleteTaskHandler}></lightning-menu-item>
+                  </lightning-button-menu>
+                </div>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+    <footer class="slds-card__footer footer" onclick={showAll}>
+      <a if:false={isFull}>{customLabels.viewAll}</a>
+      <a if:true={isFull}>{customLabels.showLess}</a>
+    </footer>
+  </article>
+</template>

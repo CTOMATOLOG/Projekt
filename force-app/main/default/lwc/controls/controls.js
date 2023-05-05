@@ -8,7 +8,7 @@ export default class Controls extends LightningElement {
       detail: this.operand
     }));
   }
-  
+
   handleSubtract() {
     this.dispatchEvent(new CustomEvent('subtract', {
       detail: this.operand

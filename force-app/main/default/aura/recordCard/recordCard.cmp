@@ -1,0 +1,7 @@
+<aura:component>
+        <aura:attribute name="record" type="Object"/>
+        <tr>
+            <td><a href = "" aura:id="{!v.record.Id}" onclick = "{!c.navigateToRecord}">{!v.record.Id}</a></td>
+            <td>{!v.record.Name}</td>
+        </tr>
+</aura:component>
